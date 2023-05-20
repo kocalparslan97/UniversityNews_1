@@ -108,38 +108,6 @@ public class MysqlCon {
 		}
 	}
 
-	/*
-	 * public static void sqlNTVInsertFunc(String haber_ids, String hash, String
-	 * titles, String descs, String links, String kurum_lists, String yayin_yeri,
-	 * String yayin_tarihi, String eklenme_tarihi) { try {
-	 * 
-	 * Class.forName("com.mysql.jdbc.Driver");
-	 * 
-	 * Connection con = DriverManager.getConnection(
-	 * "jdbc:mysql://localhost:3306/unihaber_db?useUnicode=true&characterEncoding=utf-8",
-	 * "root", "");
-	 * 
-	 * Statement stmt = (Statement) con.createStatement();
-	 * 
-	 * int result = stmt.executeUpdate(
-	 * "INSERT INTO ntvhaber (haber_id, hash, baslik, ozet, link, kurum_list, yayin_yeri, yayin_tarihi, eklenme_tarihi)"
-	 * + " VALUES ('" + haber_ids + "','" + hash + "','" + titles + "','" + descs +
-	 * "','" + links + "','" + kurum_lists + "','" + yayin_yeri + "','" +
-	 * yayin_tarihi + "','" + eklenme_tarihi + "')");
-	 * 
-	 * if (result > 0) { System.out.println("Successfully Inserted !"); } else {
-	 * System.out.println("UnSuccessful Insertion.."); }
-	 * 
-	 * con.close();
-	 * 
-	 * } catch (SQLException ex) {
-	 * 
-	 * ex.printStackTrace();
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); }
-	 * 
-	 * }
-	 */
 	public static void NtvNewInsertFunc(String haber_ids, String hash, String titles, String descs, String links,
 			String kurum_lists, String yayin_yeri, String yayin_tarihi, String eklenme_tarihi) {
 		try {
@@ -315,36 +283,6 @@ public class MysqlCon {
 		}
 	}
 
-	/*
-	 * public static void NtvNewInsertFunc(int Ids, String haber_ids, String hash,
-	 * String titles, String descs, String links, String kurum_lists, String
-	 * yayin_yeri, String yayin_tarihi, String eklenme_tarihi) { try {
-	 * 
-	 * Class.forName("com.mysql.jdbc.Driver");
-	 * 
-	 * Connection con = DriverManager.getConnection(
-	 * "jdbc:mysql://localhost:3306/unihaber_db?useUnicode=true&characterEncoding=utf-8",
-	 * "root", "");
-	 * 
-	 * String sql = "INSERT INTO `ntvhaber`(`Id`,`haber_id`, `hash`,  `baslik`, " +
-	 * "`ozet`,  `link`, `kurum_list`,  `yayin_yeri`,   `yayin_tarihi`, `eklenme_tarihi`)"
-	 * + " VALUES (?,?,?,?,?,?,?,?,?,?)";
-	 * 
-	 * PreparedStatement preparedStatement = (PreparedStatement)
-	 * con.prepareStatement(sql);
-	 * 
-	 * preparedStatement.setInt(1, Ids); preparedStatement.setString(2, haber_ids);
-	 * preparedStatement.setString(3, hash); preparedStatement.setString(4, titles);
-	 * preparedStatement.setString(5, descs); preparedStatement.setString(6, links);
-	 * preparedStatement.setString(7, kurum_lists); preparedStatement.setString(8,
-	 * yayin_yeri); preparedStatement.setString(9, yayin_tarihi);
-	 * preparedStatement.setString(10, eklenme_tarihi);
-	 * 
-	 * preparedStatement.execute(); System.out.println("haber bilgileri eklendi");
-	 * 
-	 * preparedStatement.close(); con.close(); } catch (Exception e) {
-	 * System.out.println("hata=" + e); } }
-	 */
 	public static void main(String[] args) {
 		// sqlInsertFunc(0, null, null, null, null, null, null, null, null, null);
 		// sqlNTVInsertFunc(566, "haber_id", "NTV", "basliklar", "açıklamalar",
