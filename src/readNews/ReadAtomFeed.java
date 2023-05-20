@@ -72,7 +72,6 @@ public class ReadAtomFeed {
 	public static List<String> ulusalKanalList = new ArrayList<String>();
 
 	public MysqlCon mysc = new MysqlCon();
-	// public NtvNewsFeed ntvnewsf = new NtvNewsFeed();
 
 	public static SyndFeed getSyndFeedForUrl(String url) throws Exception {
 
@@ -101,8 +100,7 @@ public class ReadAtomFeed {
 	}
 
 	public static ArrayList<String> getAllUni() {
-		// C:\Users\ALPARSLAN\Desktop\deneme.xlsx
-		// C:\\Users\\ALPARSLAN\\Downloads\\Universite_Listesi.xlsx
+		
 		final String NAME = "C:\\Users\\ALPARSLAN\\Desktop\\deneme.xlsx";
 		ArrayList<String> strArray = new ArrayList<String>();
 		try {
@@ -155,8 +153,7 @@ public class ReadAtomFeed {
 	}
 
 	public static void ReadInvoices() {
-		// C:\Users\ALPARSLAN\Desktop\deneme.xlsx
-		// C:\\Users\\ALPARSLAN\\Downloads\\Universite_Listesi.xlsx
+		
 		final String NAME = "C:\\Users\\ALPARSLAN\\Desktop\\deneme.xlsx";
 		try {
 			FileInputStream file = new FileInputStream(new File(NAME));
@@ -164,7 +161,7 @@ public class ReadAtomFeed {
 			DataFormatter dataFormatter = new DataFormatter();
 			Iterator<Sheet> sheets = workbook.sheetIterator();
 
-			// ArrayList<String> all_uni = new ArrayList<String>();
+			
 
 			while (sheets.hasNext()) {
 				Sheet sh = sheets.next();
@@ -179,13 +176,11 @@ public class ReadAtomFeed {
 					while (cellIterator.hasNext()) {
 						Cell cell = cellIterator.next();
 						String cellValue = dataFormatter.formatCellValue(cell);
-						// if (cell.getCellType() == CellType.STRING) {
-						//
-						// }
+						
 						System.out.println(cellValue + "");
 						all_uni.add(cellValue);
 					}
-					// System.out.println();
+					
 				}
 				System.out.println("----------ArrayList Content-----------");
 				for (int i = 0; i < all_uni.size(); i++) {
@@ -201,7 +196,7 @@ public class ReadAtomFeed {
 
 	public static void convertDateToString() {
 		LocalDateTime myDateObj = LocalDateTime.of(2021, 8, 27, 16, 20);
-//		System.out.println("before formatting  : " + myDateObj);
+
 		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		String formattedDate = myDateObj.format(myFormatObj);
 
@@ -209,52 +204,16 @@ public class ReadAtomFeed {
 	}
 
 	public static String convertDateToString1(String newsDate) throws ParseException {
-		// https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
-		// EEE, d MMM yyyy HH:mm:ss Z -> Milliyet Haber pubDate formatı
-		// PubDate : Mon, 13 Sep 2021 15:24:57 Z
-		// https://www.dariawan.com/tutorials/java/java-datetimeformatter-tutorial-examples/
-		// Adım1: String -> Date1 ,Adım2: Date1 -> Date2 , Adım3: Date2 -> String2
-		/*
-		 * String pattern = "EEE, d MMM yyyy HH:mm:ss Z"; SimpleDateFormat sdf = new
-		 * SimpleDateFormat(pattern);
-		 * 
-		 * Date dateNew = new Date(); return new
-		 * SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(dateNew);
-		 */
-		// String strDate = newsDate;
-		// Date date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(strDate);
-		// String strDate = newsDate;
-		// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy
-		// HH:mm:ss");
-		// LocalDate LDate = LocalDate.parse(strDate, formatter);
-		/*
-		 * // This is the format date we want DateFormat mSDF = new
-		 * SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-		 * 
-		 * // This format date is actually present SimpleDateFormat formatter = new
-		 * SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
-		 * 
-		 * return mSDF.format(formatter.parse(newsDate));
-		 */
-		/*
-		 * SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss",
-		 * Locale.ENGLISH);
-		 * 
-		 * String dateInString = newsDate; Date date = formatter.parse(dateInString);
-		 * return date;
-		 */
+		
 		String dateInString = "07/06-2013";
 		Date date = DateUtils.parseDate(dateInString, new String[] { "yyyy-MM-dd HH:mm:ss", "dd/MM-yyyy" });
 		return "";
-		// return LDate;
-		// return "";
-		// System.out.println(date);
-
+		
 	}
 
 	public static void main(String[] args) throws IllegalArgumentException, FeedException, IOException, ParseException {
 		/*
-		 * sıkıntılı olan haber kanalları veri çekerken :
+		 * haber kanalları veri çekerken :
 		 * https://www.ntv.com.tr/turkiye.rss (Tüm verileri alabilyoruz)
 		 * https://www.milliyet.com.tr/rss/rssnew/dunyarss.xml (Tüm verilerini
 		 * alabiliyoruz) https://www.internethaber.com/rss (GuId için linki parse edip
@@ -269,8 +228,7 @@ public class ReadAtomFeed {
 		 * temp17
 		 * 
 		 */
-		// ReadInvoices();
-
+		
 		System.out.println("Deneme : " + convertDateToString1("Mon, 24 Sep 2021 15:24:57 Z"));
 
 		System.out.println("---Birgun Haber---");
@@ -302,13 +260,9 @@ public class ReadAtomFeed {
 
 				all_uni = getAllUni();
 
-				// System.out.println("Parse GuID :" + guId1);
+				
 
-				/*
-				 * ((SyndEntryImpl) o).getDescription().getValue().replaceAll("<p>", "")
-				 * .replaceAll("<strong>", "").replaceAll("</strong>", "").replaceAll("</p>",
-				 * " ") .replaceAll("<img src=", " ").replaceAll("/>", "")
-				 */
+				
 				System.out.println("---------------------------------------------");
 				System.out.println("GuId :" + birgunnewsf.getGuId());
 				System.out.println("Title :" + birgunnewsf.getTitle()); // ((SyndEntryImpl) o).getTitle()
@@ -316,9 +270,7 @@ public class ReadAtomFeed {
 				System.out.println("Link :" + birgunnewsf.getLink());
 				System.out.println("PubDate :" + birgunnewsf.getPubDate());
 				System.out.println("---------------------------------------------");
-//				System.out.println(convertDateToString1(pubDate1.getYear(), pubDate1.getMonth(), pubDate1.getDay(),
-//						pubDate1.getHours(), pubDate1.getMinutes(), pubDate1.getSeconds()));
-				// dd-MM-yyyy HH:mm:ss | önceki hali yyyy-MM-dd HH:mm:ss
+
 				String newstring = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(birgunnewsf.getPubDate());
 				System.out.println("Edited Date Format : " + newstring);
 
@@ -337,17 +289,13 @@ public class ReadAtomFeed {
 							System.out.println("---SQL Insert---");
 							Random rand = new Random();
 							int randIds = u + rand.nextInt(100);
-							// int rand = (int) Math.random() * 100;
-							// System.out.println(rand);
+
 							MysqlCon.BirgunNewInsertFunc(birgunnewsf.getGuId(), "birgun", birgunnewsf.getTitle(),
 									birgunnewsf.getContent(), birgunnewsf.getLink(), temp, "birgun haber",
 									newstring_tarihi, newstring);
 
 						}
-						// birgunkurumList alt satirdaki gibi olması gerekiyor ve String e ata
-						// Boğaziçi Üniversitesi, Akdeniz Üniversitesi, Çukurova Üniversitesi
-						// String kList = birgunkurum_list.clone().toString();
-						// System.out.println("deneme : " + kList);
+
 
 						// Bu temp1 değişkeninde "birgunkurumList" in içeriği yer aliyor.
 						String temp1 = temp + ",";
@@ -361,8 +309,6 @@ public class ReadAtomFeed {
 						if (temp1.contains(sonEleman)) {
 							System.out.println("->" + temp2);
 						}
-
-						// System.out.println("->" + temp1.replaceAll(",", ""));
 
 						System.out.println("---------------------------------------------");
 
@@ -423,16 +369,10 @@ public class ReadAtomFeed {
 					ntvnewsf.setContent(content.getValue().replaceAll("<img src=", "").replaceAll("<p>", " ")
 							.replaceAll("<br>", "").replaceAll("</br>", "").replaceAll("/>", ""));
 					System.out.println("Content : " + ntvnewsf.getContent());
-					/*
-					 * .replaceAll("<img src=", "").replaceAll("<p>", " ") .replaceAll("<br>",
-					 * "").replaceAll("</br>", "").replaceAll("/>", "")
-					 */
+
 					System.out.println("------------------------------------------------------------------");
 					String desc3 = ntvnewsf.getContent();
-					/*
-					 * .replaceAll("<img src=", "").replaceAll("<p>", " ") .replaceAll("<br>",
-					 * "").replaceAll("</br>", "").replaceAll("/>", "")
-					 */
+
 					String strDesc3 = StringUtils.substring(desc3, 0);
 					String[] strDescPar3 = strDesc3.split(" ");
 
@@ -469,7 +409,6 @@ public class ReadAtomFeed {
 						}
 					}
 				}
-				// System.out.println("***");
 
 				System.out.println("------------------------------------------------------------------");
 				String title3 = entry.getTitle();
@@ -560,13 +499,7 @@ public class ReadAtomFeed {
 			System.out.println("Link : " + milliyetnewf.getLink());
 			System.out.println("PubDate : " + milliyetnewf.getPubDate());
 			System.out.println("------------------------------");
-			/*
-			 * System.out.println("---Parse Date---"); SimpleDateFormat sdf = new
-			 * SimpleDateFormat("EEE d MMM yyyy HH:mm:ss Z"); SimpleDateFormat sdf2 = new
-			 * SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); Date fetch =
-			 * sdf.parse("Thu 16 Sep 2021 16:01:02 Z"); System.out.println("Deneme : " +
-			 * sdf2.format(fetch)); System.out.println("----------------");
-			 */
+			
 			for (int u = 0; u < all_uni.size(); u++) {
 				String temp3 = all_uni.get(u);
 				boolean isTitleContain2 = StringUtils.containsIgnoreCase(milliyetnewf.getTitle(), temp3);
@@ -639,10 +572,7 @@ public class ReadAtomFeed {
 			internetnewf.setPubDate(pubDate4);
 
 			all_uni = getAllUni();
-			// System.out.println(all_uni);
-
-			// System.out.println("Title4 : " + title4);
-			// System.out.println("Desc4 : " + desc4);
+			
 			System.out.println("GuId :" + internetnewf.getGuId());
 			System.out.println("Title :" + internetnewf.getTitle());
 			System.out.println("Desc : " + internetnewf.getContent());
